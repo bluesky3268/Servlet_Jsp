@@ -22,7 +22,7 @@ input{
 	<form action="calc3" method ="post">
 		<table>
 			<tr>
-				<td class="output" colspan="5"></td>				
+				<td class="output" colspan="4">${3+4 }</td>				
 			</tr>
 			<tr>
 				<td><input type="submit" name="operator" value="CE"></td>

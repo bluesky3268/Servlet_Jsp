@@ -16,8 +16,9 @@ public class CalcPage extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Cookie[] cookies = request.getCookies();
 				
+		Cookie[] cookies = request.getCookies();
+		
 		String exp = "0";
 		if(cookies != null)
 			for(Cookie c : cookies)
@@ -57,34 +58,34 @@ public class CalcPage extends HttpServlet {
 		out.printf("			<td class=\"output\" colspan=\"5\">%s</td>	", exp);			
 		out.write("		</tr>");
 		out.write("		<tr>");
-		out.write("			<td><input type=\"submit\" name=\"operater\" value=\"CE\"></td>");
-		out.write("			<td><input type=\"submit\" name=\"operater\" value=\"C\"></td>");
-		out.write("			<td><input type=\"submit\" name=\"operater\" value=\"BS\"></td>");
-		out.write("			<td><input type=\"submit\" name=\"operater\" value=\"/\"></td>	");			
+		out.write("			<td><input type=\"submit\" name=\"operator\" value=\"CE\"></td>");
+		out.write("			<td><input type=\"submit\" name=\"operator\" value=\"C\"></td>");
+		out.write("			<td><input type=\"submit\" name=\"operator\" value=\"BS\"></td>");
+		out.write("			<td><input type=\"submit\" name=\"operator\" value=\"/\"></td>	");			
 		out.write("		</tr>");
 		out.write("		<tr>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"7\"></td>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"8\"></td>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"9\"></td>");
-		out.write("			<td><input type=\"submit\" name=\"operater\" value=\"*\"></td>");			
+		out.write("			<td><input type=\"submit\" name=\"operator\" value=\"*\"></td>");			
 		out.write("		</tr>");
 		out.write("		<tr>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"4\"></td>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"5\"></td>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"6\"></td>");
-		out.write("			<td><input type=\"submit\" name=\"operater\" value=\"-\"></td>");			
+		out.write("			<td><input type=\"submit\" name=\"operator\" value=\"-\"></td>");			
 		out.write("		</tr>");
 		out.write("		<tr>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"1\"></td>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"2\"></td>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"3\"></td>");
-		out.write("			<td><input type=\"submit\" name=\"operater\" value=\"+\"></td>");				
+		out.write("			<td><input type=\"submit\" name=\"operator\" value=\"+\"></td>");				
 		out.write("		</tr>");
 		out.write("		 <tr>");
 		out.write("			<td></td>");
 		out.write("			<td><input type=\"submit\" name=\"value\" value=\"0\"></td>");
 		out.write("			<td><input type=\"submit\" name=\"dot\" value=\".\"></td>");
-		out.write("			<td><input type=\"submit\" name=\"operater\" value=\"=\"></td>");				
+		out.write("			<td><input type=\"submit\" name=\"operator\" value=\"=\"></td>");				
 		out.write("		</tr>");
 		out.write("</table>");
 

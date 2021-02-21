@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet("/calc3")
 public class Calc3 extends HttpServlet {
 
@@ -34,22 +33,26 @@ public class Calc3 extends HttpServlet {
 					break;
 				}
 		if(operator != null && operator.equals("=")) {
-			ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+			ScriptEngine engine = new ScriptEngineManager().getEngineByName("JavaScript");
 			try {
 				exp = String.valueOf(engine.eval(exp));
 			} catch (ScriptException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}	
 		
-		}
+		}else if(operator != null && operator.equals("C")) {
+			exp="";
+			
+		}else {
 		
 		exp += (value == null) ? "":value;
 		exp += (operator == null) ? "":operator;
 		exp += (dot == null) ? "":dot;
-		
+		}
 		
 		Cookie expCookie = new Cookie("exp", exp);
+		if(operator != null && operator.equals("C")) 
+			expCookie.setMaxAge(0); // 쿠키가 남지 않고 바로 소멸.
 		
 		response.addCookie(expCookie);
 		response.sendRedirect("calcPage");
