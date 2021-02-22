@@ -11,6 +11,7 @@ metadata-complete="false">
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
 <!--   <servlet>
   <servlet-name>na</servlet-name>
   <servlet-class>com.newlecture.web.Nana</servlet-class>
