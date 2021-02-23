@@ -1,6 +1,18 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8" %>
 <%
+	String url = "jdbc:oracle:thin:@localhost:1521/xe";
+	String sql = "SELECT * FROM NOTICE WHERE HIT > 10";
+	
+	Class.forName("oracle.jdbc.driver.OracleDriver"); //class.forName메소드를 통해서 "oracle.jdbc.driver.OracleDriver(얘가 DriverManager)"를 객체화(->로드)
+	Connection con = DriverManager.getConnection(url, "newlec", "newlec"); // 연결객체를 얻음
+	Statement st = con.createStatement(); // 연결 후 실행도구 생성
+	ResultSet rs = st.executeQuery(sql); // 쿼리 실행
+	
 
 %>
 
@@ -177,17 +189,16 @@
 					</thead>
 					<tbody>
 							
-					<% for(int i = 0; i < 10; i++){ %>
-							
-					<tr>
-						<td><%=i+1 %></td>
-						<td class="title indent text-align-left"><a href="detail.html">스프링 8강까지의 예제 코드</a></td>
-						<td>newlec</td>
-						<td>
-							2019-08-18		
-						</td>
-						<td>146</td>
-					</tr>
+					<% while(rs.next()){ %>
+						<tr>
+							<td><%=rs.getInt("ID") %></td>
+							<td class="title indent text-align-left"><a href="detail.html"><%=rs.getString("TITLE") %></a></td>
+							<td><%=rs.getString("WRITER_ID") %></td>
+							<td>
+								<%=rs.getDate("REGDATE") %>	
+							</td>
+							<td><%=rs.getInt("HIT") %></td>
+						</tr>
 					
 					<%} %>	
 					
@@ -265,3 +276,9 @@
     </body>
     
     </html>
+    
+    <%
+		rs.close();
+		st.close();
+		con.close();
+    %>
