@@ -209,17 +209,15 @@
 
 			<div class="margin-top align-center pager">	
 		
-	
-		
 	<div>
 		<c:set var="page" value="${(param.p == null)?1:param.p}" />
 		<c:set var="startNum" value="${page-(page-1)%5}" />
 		<c:set var="lastNum" value="25" />
 		
-		<c:if test="${startNum>0}">
-			<a class="btn btn-prev" href="p=${startNum-1}&t=&q=">이전</a>
+		<c:if test="${startNum>1}">
+			<a class="btn btn-prev" href="?p=${startNum-1}&t=&q=" >이전</a>
 		</c:if>
-		<c:if test="${startNum<=0}">
+		<c:if test="${startNum<=1}">
 			<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
 		</c:if>
 	</div>
@@ -241,7 +239,7 @@
 		</c:if>
 	</div>
 	
-			</div>
+</div>
 		</main>
 		
 			
